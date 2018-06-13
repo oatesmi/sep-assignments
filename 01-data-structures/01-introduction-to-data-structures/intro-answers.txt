@@ -1,0 +1,16 @@
+#Line
+1.  Developers can use the array data structure implemented by the Line class.
+    To access the methods available to the class you would make a call to line.method.
+2.  You could search for a specific element by either its index (position in line)
+    or by it's value.
+3.  This could represent any situation where First In First Out is applied.  For
+    example, rotating milk in a refrigerator, by date received and expiration date.
+
+#Screen
+1.  Developers can use the object/array data structure implemented by the Screen
+    class. To access the methods available to the class you would make a call to
+    screen.method.
+2.  To locate a specific element, you could search for it by its key, value, or
+    its location on the matrix, as given by (x,y) coordinates.
+3.  This could also represent searching for a products physical location in a
+    warehouse based on its name, sku, or expected location.  
