@@ -1,4 +1,5 @@
 require_relative 'node'
+require 'benchmark'
 
 class LinkedList
   attr_accessor :head
@@ -69,8 +70,74 @@ class LinkedList
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
-    temp = @head
-    @head = nil
-    @head = temp.next
+    if @head == @tail
+      @head = nil
+      @tail = nil
+    else
+      @head = @head.next
+    end
   end
 end
+  #
+  # def measure(number)
+  #   i = 0
+  #   while i <= number
+  #     new_head = Node.new('n' + i.to_s)
+  #     self.add_to_tail(new_head)
+  #     i += 1;
+  #   end
+  #   self
+  # end
+  #
+  # def build(number)
+  #   array = []
+  #   i = 0
+  #   while i <= number
+  #     array << i
+  #     i += 1
+  #   end
+  #   array
+  # end
+  #
+  # def ary_find(array, number)
+  #   i = 0
+  #   until array[i] == array[number]
+  #     i += 1;
+  #   end
+  #   self
+  # end
+  #
+  # def llsearch(llist, number)
+  #   i = 0
+  #   while i < number
+  #     if @head != @tail
+  #       i += 1
+  #     end
+  #   end
+  #   self
+  # end
+  #
+  # def ary_del(array, index)
+  #   array.delete_at(index)
+  #   self
+  # end
+  #
+  # def list_del(llist, number)
+  #   x = llsearch(llist, number+1)
+  #   x
+  # end
+# end
+
+# n = LinkedList.new
+#
+# array = n.build(10_000)
+# llist = n.measure(10_000)
+#
+# Benchmark.bmbm do |x|
+#   x.report('build array:    ') { n.build(10_000) }
+#   x.report('build list:     ') { n.measure(10_000) }
+#   x.report('array find 5k:  ') { n.ary_find(array, 5_000) }
+#   x.report('list find 5k:   ') { n.llsearch(llist, 5_000) }
+#   x.report('array remove 5k:') { n.ary_del(array, 5_000) }
+#   x.report('list remove 5k: ') { n.list_del(llist, 5_000) }
+# end
