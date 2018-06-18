@@ -34,7 +34,7 @@ class LinkedList
   def print
     current_node = @head
     while current_node != nil
-      puts "#{current_node.data}\n"
+      puts "#{current_node.value}\n"
       current_node = current_node.next
     end
   end

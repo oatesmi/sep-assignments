@@ -93,12 +93,21 @@ class SeparateChaining
   def print_state
     @items.each_with_index do |item,i|
       if @items[i]
-        puts "#{@items[i].head.value}'s Bucket:"
+        puts "#{@items[i].head.key}'s Bucket:"
         puts "--------------------"
         puts "#{@items[i].print}"
         puts "--End of Bucket----"
       end
     end
     load_factor
-  end 
+  end
 end
+
+x = SeparateChaining.new(2)
+y = SeparateChaining.new(99)
+
+x['scrubs'] = 'JD'
+x['scrubs'] = 'Carla'
+x['scrubs'] = 'Dr Cox'
+
+puts x.print_state
