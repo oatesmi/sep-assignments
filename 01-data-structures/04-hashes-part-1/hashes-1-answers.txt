@@ -1,0 +1,2 @@
+Doubling the size of the array of HashClass is a bad idea because the array will
+grow exponentially, likely using more memory than strictly necessary.  
