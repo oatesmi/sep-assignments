@@ -1,0 +1,24 @@
+1. Spatial locality separates data requests created by he processor. Instead of
+    searching RAM multiple times for single requests, it grabs chunks.  This is
+    faster than going to RAM multiple times.  With an array, memory is located
+    next to one another.  With linked lists, this isn't necessarily true. Looping
+    over an array takes less time than going through each item in a linked list
+    because large chunks of the data are grabbed and stored in the cache.
+
+2.  Compare the time it takes to create a 10,000 item Array to appending 10,000
+    items to a Linked List...
+                            user     system      total        real
+      build array:       0.000000   0.000000   0.000000 (  0.000429)
+      build list:        0.010000   0.000000   0.010000 (  0.005128)
+
+    Compare the time it takes to access the 5000th element of the Array and the
+    5000th Node in the Linked List.
+                            user     system      total        real
+      array find 5k:     0.000000   0.000000   0.000000 (  0.000153)
+      list find 5k:      0.000000   0.000000   0.000000 (  0.000179)
+
+    Compare the time it takes to remove the 5000th element from the Array to
+    removing the 5000th Node in the Linked List.
+                            user     system      total        real
+      array remove 5k:   0.000000   0.000000   0.000000 (  0.000006)
+      list remove 5k:    0.000000   0.000000   0.000000 (  0.000184)
