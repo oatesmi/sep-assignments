@@ -21,7 +21,18 @@ class MyQueue
   end
 
   def empty?
-    return true if @queue.length == 0
-    false
+    @queue.length < 1
   end
 end
+
+n = MyQueue.new
+n.enqueue("Rob")
+n.enqueue("Tom")
+n.enqueue("Julian")
+n.enqueue("Kanye")
+puts n.head
+puts n.tail
+n.dequeue
+puts n.head
+puts n.tail
+puts n.empty?
