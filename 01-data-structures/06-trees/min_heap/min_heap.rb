@@ -21,7 +21,7 @@ class MinHeap
   def exchange(source, target)
     temp = @heap[source]
     @heap[source] = @heap[target]
-    @heap[target] = temp 
+    @heap[target] = temp
   end
 
   def insert(data)
@@ -30,8 +30,10 @@ class MinHeap
   end
 
   def delete(data)
+    return nil if data === nil
+
     @heap.each_with_index do |item, i|
-      if item && item === data
+      if item && item.title === data
         @heap.delete_at(i)
       end
     end
@@ -39,9 +41,11 @@ class MinHeap
   end
 
   def find(data)
+    return nil if data === nil
+
     @heap.each do |item|
-      if item && item === data
-        return item
+      if item && item.title === data
+        return item.title
       end
     end
   end

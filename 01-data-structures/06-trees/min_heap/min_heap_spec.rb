@@ -3,7 +3,7 @@ include RSpec
 require_relative 'min_heap'
 
 RSpec.describe MinHeap, type: Class do
-  let (:heap) { MinHeap.new }
+  let (:tree) { MinHeap.new }
 
   let (:matrix) { Node.new("The Matrix", 87) }
   let (:pacific_rim) { Node.new("Pacific Rim", 72) }
@@ -19,49 +19,93 @@ RSpec.describe MinHeap, type: Class do
   let (:mad_max_2) { Node.new("Mad Max 2: The Road Warrior", 98) }
 
   describe "#insert(data)" do
-    it "#heap is expected to not be empty" do
-      heap.insert(pacific_rim)
-      expect(heap).not_to be_empty
+    it "properly inserts a new node" do
+      tree.insert(pacific_rim)
+      expect(tree.heap[0].title).to eq "Pacific Rim"
+    end
+
+    it "maintains the min heap property" do
+      tree.insert(braveheart)
+      tree.insert(pacific_rim)
+      tree.insert(martian)
+      tree.insert(hope)
+      tree.insert(empire)
+      tree.insert(shawshank)
+      expect(tree.heap[0].rating).to eq 72
+      expect(tree.heap[1].rating).to eq 78
+      expect(tree.heap[2].rating).to eq 91
+      expect(tree.heap[3].rating).to eq 93
+      expect(tree.heap[4].rating).to eq 94
+      expect(tree.heap[5].rating).to eq 92
     end
   end
 
   describe "#find(data)" do
+    it "handles nil gracefully" do
+      tree.insert(empire)
+      tree.insert(mad_max_2)
+      expect(tree.find(nil)).to eq nil
+    end
 
+    it "finds the correct node" do
+      tree.insert(braveheart)
+      tree.insert(pacific_rim)
+      tree.insert(martian)
+      tree.insert(hope)
+      tree.insert(empire)
+      tree.insert(shawshank)
+
+      expect(tree.find("Pacific Rim")).to eq "Pacific Rim"
+    end
   end
 
   describe "#delete(data)" do
+    it "handles nil gracefully" do
+      expect(tree.delete(nil)).to eq nil
+    end
 
+    it "properly deletes a node" do
+      tree.insert(braveheart)
+      tree.insert(pacific_rim)
+      tree.insert(martian)
+      tree.insert(hope)
+      tree.insert(empire)
+      tree.insert(shawshank)
+
+      tree.delete(hope.title)
+      expect(tree.find(hope.title)).not_to include(hope.title)
+    end
   end
 
   describe "#print" do
      specify {
-       expected_output = "The Matrix: 87\nStar Wars: Return of the Jedi: 80\nStar Wars: A New Hope: 93\nPacific Rim: 72\nInception: 86\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nBraveheart: 78\nThe Shawshank Redemption: 91\nMad Max 2: The Road Warrior: 98\nDistrict 9: 90\n"
-       tree.insert(root, hope)
-       tree.insert(root, empire)
-       tree.insert(root, jedi)
-       tree.insert(root, martian)
-       tree.insert(root, pacific_rim)
-       tree.insert(root, inception)
-       tree.insert(root, braveheart)
-       tree.insert(root, shawshank)
-       tree.insert(root, district)
-       tree.insert(root, mad_max_2)
-       expect { tree.printf }.to output(expected_output).to_stdout
+       expected_output = "Pacific Rim: 72\nBraveheart: 78\nInception: 86\nStar Wars: Return of the Jedi: 80\nDistrict 9: 90\nThe Martian: 92\nStar Wars: A New Hope: 93\nThe Shawshank Redemption: 91\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+       tree.insert(hope)
+       tree.insert(empire)
+       tree.insert(jedi)
+       tree.insert(martian)
+       tree.insert(pacific_rim)
+       tree.insert(inception)
+       tree.insert(braveheart)
+       tree.insert(shawshank)
+       tree.insert(district)
+       tree.insert(mad_max_2)
+       expect { tree.print }.to output(expected_output).to_stdout
      }
 
      specify {
-       expected_output = "The Matrix: 87\nBraveheart: 78\nMad Max 2: The Road Warrior: 98\nPacific Rim: 72\nInception: 86\nDistrict 9: 90\nStar Wars: Return of the Jedi: 80\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nStar Wars: A New Hope: 93\n"
-       tree.insert(root, mad_max_2)
-       tree.insert(root, district)
-       tree.insert(root, shawshank)
-       tree.insert(root, braveheart)
-       tree.insert(root, inception)
-       tree.insert(root, pacific_rim)
-       tree.insert(root, martian)
-       tree.insert(root, jedi)
-       tree.insert(root, empire)
-       tree.insert(root, hope)
-       expect { tree.printf }.to output(expected_output).to_stdout
+       expected_output = "Pacific Rim: 72\nBraveheart: 78\nInception: 86\nStar Wars: Return of the Jedi: 80\nStar Wars: A New Hope: 93\nDistrict 9: 90\nThe Martian: 92\nThe Shawshank Redemption: 91\nMad Max 2: The Road Warrior: 98\nStar Wars: The Empire Strikes Back: 94\n"
+       tree.insert(mad_max_2)
+       tree.insert(district)
+       tree.insert(shawshank)
+       tree.insert(braveheart)
+       tree.insert(inception)
+       tree.insert(pacific_rim)
+       tree.insert(martian)
+       tree.insert(jedi)
+       tree.insert(empire)
+       tree.insert(hope)
+       expect { tree.print }.to output(expected_output).to_stdout
      }
   end
-end
+  end
