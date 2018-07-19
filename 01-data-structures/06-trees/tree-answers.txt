@@ -1,0 +1,25 @@
+1.  Difference between the heap and the binary tree is that the heap is easier to
+  manually search through.  While there is structure to both, looking over the
+  BST, the pattern is less apparent.  Min Heap is not totally sorted, but there
+  is an apparent structure.
+
+2.  Average insertion: 610x faster with Heap
+    Average search: 2x faster with Heap
+    Average deletion: .75x faster with BST
+
+                                  user     system      total        real
+Binary Search Tree - insert:  4.220000   0.000000   4.220000 (  4.216615)
+          Min Heap - insert:  0.020000   0.000000   0.020000 (  0.006915)
+  Binary Search Tree - find:  0.000000   0.000000   0.000000 (  0.000740)
+            Min Heap - find:  0.000000   0.000000   0.000000 (  0.000362)
+Binary Search Tree - delete:  0.000000   0.000000   0.000000 (  0.000872)
+          Min Heap - delete:  0.000000   0.000000   0.000000 (  0.001144)
+
+    You would use the BST if you were unsure of the exact value of what you were
+    searching for and had a large amount of data to sift through. For example,
+    searching a large array to see if a single value exists.
+
+    You would use the Heap if you were unsure of any of the values, but had an
+    idea of where the data you seek is in relation to the data set. For example,
+    searching a large data set by rankings, or some other arbitrary way to sort
+    keys and values. 
