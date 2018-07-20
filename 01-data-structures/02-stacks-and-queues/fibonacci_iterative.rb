@@ -1,6 +1,7 @@
 def fib(n)
   fib_0 = 0
   fib_1 = 1
+  
 
   (0..n-1).each do |n|
     temp = fib_0
