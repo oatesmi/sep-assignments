@@ -1,3 +1,5 @@
+require 'benchmark'
+
 def fib(n)
   fib_0 = 0
   fib_1 = 1
@@ -20,3 +22,7 @@ puts fib(6)
 puts fib(7)
 puts fib(8)
 puts fib(9)
+
+Benchmark.bmbm do |x|
+  x.report('iterative fib(20):') { fib(20) }
+end 

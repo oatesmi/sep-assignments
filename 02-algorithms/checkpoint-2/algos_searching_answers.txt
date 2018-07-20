@@ -1,0 +1,19 @@
+1. 7
+2. 2
+3a. fib(10) = fib(9) + fib(8) = 34 + 21 = 55
+3b. fib(11) = fib(10) + fib(9) = 55 + 34 = 89
+3c. fib(12) = fib(11) + fib(10) = 89 + 55 = 144
+
+                          user     system      total        real
+iterative fib(20):   0.000000   0.000000   0.000000 (  0.000013)
+recursive fib(20):   0.000000   0.000000   0.000000 (  0.000960)
+
+1. Unsorted, I would use a linear search and an iterative solution.  Since the
+  collection is unsorted, there is no way to accurately determine the midpoint,
+  so a binary solution would be skipping over untold amounts of potential answers.
+  It shouldn't be a recursive solution because there is no way to determine a base
+  case to end the recursion.
+
+2. Sorted, I would use a recursive binary search.  You can determine the midpoint
+  of a sorted collection easily, and using a recursive solution allows for less code
+  to be written.
