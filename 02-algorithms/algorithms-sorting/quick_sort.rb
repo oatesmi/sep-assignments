@@ -1,5 +1,5 @@
 module QuickSort
-  def self.sort(collection, low = 0, high = (collection.length - 1))
+  def self.sort(collection, low = 0, high = collection.length)
 
     if low < high
       pivot = partition(collection, low, high)
@@ -9,9 +9,11 @@ module QuickSort
     return collection
   end
 
+  private
+
   def self.partition(collection, low, high)
     i = low
-    j = high + 1
+    j = high
     pivot = collection[low]
 
     while true

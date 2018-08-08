@@ -1,0 +1,67 @@
+   Bucket Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+     Bucket Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+     Heap Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+       Heap Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+   Bubble Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+     Bubble Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Insertion Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+  Insertion Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    Merge Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+      Merge Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    Quick Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+      Quick Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Selection Sort, unsorted: [0, 9, 1, 8, 2, 7, 5, 3, 6, 4]
+  Selection Sort, sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  Rehearsal ---------------------------------------------------------------
+     Bucket sort 50 items:      0.000000   0.000000   0.000000 (  0.000212)
+       Heap sort 50 items:      0.000000   0.000000   0.000000 (  0.000145)
+      Quick sort 50 items:      0.000000   0.000000   0.000000 (  0.000054)
+     Bubble sort 50 items:      0.000000   0.000000   0.000000 (  0.000204)
+  Insertion sort 50 items:      0.000000   0.000000   0.000000 (  0.000159)
+      Merge sort 50 items:      0.000000   0.000000   0.000000 (  0.000177)
+  Selection sort 50 items:      0.000000   0.000000   0.000000 (  0.000130)
+     Bucket sort 5_000 items:   0.000000   0.000000   0.000000 (  0.007224)
+       Heap sort 5_000 items:   0.030000   0.000000   0.030000 (  0.021716)
+      Quick sort 5_000 items:   0.000000   0.000000   0.000000 (  0.005331)
+     Bubble sort 5_000 items:   1.790000   0.000000   1.790000 (  1.794234)
+  Insertion sort 5_000 items:   0.860000   0.000000   0.860000 (  0.866533)
+      Merge sort 5_000 items:   0.070000   0.030000   0.100000 (  0.086899)
+  Selection sort 5_000 items:   0.700000   0.000000   0.700000 (  0.699358)
+  ------------------------------------------------------ total: 3.480000sec
+
+                                    user     system      total        real
+     Bucket sort 50 items:      0.000000   0.000000   0.000000 (  0.000144)
+       Heap sort 50 items:      0.000000   0.000000   0.000000 (  0.000114)
+      Quick sort 50 items:      0.000000   0.000000   0.000000 (  0.000050)
+     Bubble sort 50 items:      0.000000   0.000000   0.000000 (  0.000197)
+  Insertion sort 50 items:      0.000000   0.000000   0.000000 (  0.000134)
+      Merge sort 50 items:      0.000000   0.000000   0.000000 (  0.000136)
+  Selection sort 50 items:      0.000000   0.000000   0.000000 (  0.000115)
+     Bucket sort 5_000 items:   0.000000   0.000000   0.000000 (  0.006592)
+       Heap sort 5_000 items:   0.030000   0.000000   0.030000 (  0.021286)
+      Quick sort 5_000 items:   0.000000   0.000000   0.000000 (  0.005443)
+     Bubble sort 5_000 items:   1.750000   0.000000   1.750000 (  1.742270)
+  Insertion sort 5_000 items:   0.840000   0.000000   0.840000 (  0.866584)
+      Merge sort 5_000 items:   0.060000   0.060000   0.120000 (  0.114051)
+  Selection sort 5_000 items:   0.690000   0.000000   0.690000 (  0.693617)
+
+Link to bar graph: https://docs.google.com/spreadsheets/d/1DDdEsopjwVu6qLkSYa6fyYdmZd8_E0DuBZZImq934nY/edit?usp=sharing
+
+So, looking at the data, quick sort was by far the most efficient. It seems like comparison
+sorts are significantly more efficient than non-comparison sorts. It really seems like
+efficiency scales with the size of the data set. Smaller data sets all seem to run
+relatively well on all the algorithms tested.  Larger data sets performed best on
+bucket and heap sorts, likely because the other methods all sort in place and have
+to iterate over the entire collection repeatedly to complete the sort. The exception
+to this is if the data set is already partially sorted. In that case, you would
+definitely want to favor a simpler comparison sort.  From the reading I did, it
+seems like the optimal algorithm begins with something like a heap, bucket, or quick
+sort that fall back to a simpler sort if/once the data set becomes small enough, or
+sorted enough.
