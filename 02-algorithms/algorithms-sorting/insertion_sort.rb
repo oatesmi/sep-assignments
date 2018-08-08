@@ -1,24 +1,14 @@
-def insertion_sort(collection)
-  sorted_collection = [collection.delete_at(0)]
-
-  for val in collection
-    sorted_collection_index = 0
-    while sorted_collection_index < sorted_collection.length
-      if val <= sorted_collection[sorted_collection_index]
-        sorted_collection.insert(sorted_collection_index, val)
-        break
-      elsif sorted_collection_index == sorted_collection.length - 1
-        sorted_collection.insert(sorted_collection_index + 1, val)
-        break
+module InsertionSort
+  def self.sort(array, compare = lambda { |a, b| a <=> b })
+    (0...array.length).each do |i|
+      item = array[i]
+      indexHole = i
+      while indexHole > 0 and compare.call(array[indexHole - 1], item) > 0
+        array[indexHole] = array[indexHole - 1]
+        indexHole = indexHole - 1
       end
-
-      sorted_collection_index += 1
+      array[indexHole] = item
     end
+    array
   end
-
-  sorted_collection
 end
-
-# array = %w(1 9 2 8 3 7 4 6 5)
-# puts array
-# puts insertion_sort(array)
